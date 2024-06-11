@@ -84,7 +84,7 @@ namespace TicTacToe_Client_Server
                     case "String":
                         System.Diagnostics.Debug.WriteLine(jsonMessage);
                         break;
-                    case "TcpPacketMove":
+                    case nameof(TcpPacketMove):
                         var packetMove = JsonConvert.DeserializeObject<TcpPacketMove>(messageContent);
 
                         if (this.gameData.CurrentPlayerTurn != packetMove.PlayerSymbol)
@@ -126,7 +126,7 @@ namespace TicTacToe_Client_Server
                         }
 
                             break;
-                    case "TcpPacketBoard": // możliwe ze bedzie do wywalenia
+                    case nameof(TcpPacketBoard): // możliwe ze bedzie do wywalenia
                         var packetBoard = JsonConvert.DeserializeObject<TcpPacketBoard>(messageContent);
 
                         int rows = packetBoard.board.GetLength(0); // Pobiera liczbę wierszy
@@ -142,7 +142,7 @@ namespace TicTacToe_Client_Server
                         }
 
                         break;
-                    case "TcpPacketWin": //możliwe ze bedzie do wywalenia
+                    case nameof(TcpPacketWin): //możliwe ze bedzie do wywalenia
                         var packetWin = JsonConvert.DeserializeObject<TcpPacketWin>(messageContent);
                         //System.Diagnostics.Debug.WriteLine($"Ruch gracza {packet.PlayerSymbol}: ({packet.x}, {packet.y})");
                         break;
