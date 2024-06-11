@@ -15,25 +15,10 @@ namespace TicTacToe_Client_Server
 
         public static char PlayerSymbol { get; set; }
 
-        private static char _playerSymbolMove;
-        /// <summary>
-        /// which player can currently move
-        /// </summary>
-        public static char PlayerSymbolMove
+        public static char[,] Board
         {
             get
             {
-                return _playerSymbolMove;
-            }
-            set { 
-                _playerSymbolMove = value;
-                PlayerSymbolMoveOnValueChanged(EventArgs.Empty);
-            }
-        }
-
-        public static char[,] Board
-        {
-            get {
                 return _board;
             }
             set
@@ -42,7 +27,7 @@ namespace TicTacToe_Client_Server
                 BoardOnValueChanged(EventArgs.Empty);
             }
         }
-        
+
         private static char[,] _board;
         public static event EventHandler BoardChanged;
 
@@ -50,7 +35,24 @@ namespace TicTacToe_Client_Server
         {
             BoardChanged?.Invoke(null, e);
         }
-        
+
+        public static char PlayerSymbolMove
+        {
+            get
+            {
+                return _playerSymbolMove;
+            }
+            set
+            {
+                _playerSymbolMove = value;
+                PlayerSymbolMoveOnValueChanged(EventArgs.Empty);
+            }
+        }
+
+        /// <summary>
+        /// which player can currently move
+        /// </summary>
+        private static char _playerSymbolMove;
         public static event EventHandler PlayerSymbolMoveChanged;
 
         protected static void PlayerSymbolMoveOnValueChanged(EventArgs e)
@@ -58,5 +60,4 @@ namespace TicTacToe_Client_Server
             PlayerSymbolMoveChanged?.Invoke(null, e);
         }
     }
-
 }
