@@ -71,7 +71,7 @@ namespace TicTacToe_Client_Server
                     case "TcpPacketWin":
                         var winState = JsonConvert.DeserializeObject<TcpPacketWin>(messageContent);
                         App.Board = new char[3, 3];
-                        if (MessageBox.Show($"Gre wygrał gracz z symbolem: {winState.PlayerSymbol} \n czy chcesz zagrać jeszcze raz?", "Wynik gry", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        if (MessageBox.Show($"Gre wygrał gracz z symbolem: {winState.PlayerSymbol}", "Wynik gry", MessageBoxButton.OK) == MessageBoxResult.OK)
                         {
                             //Connect(server, port);
                         }

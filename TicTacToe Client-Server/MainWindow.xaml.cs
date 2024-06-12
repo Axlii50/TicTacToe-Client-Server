@@ -27,9 +27,27 @@ namespace TicTacToe_Client_Server
 
         private void App_PlayerSymbolMoveChanged(object? sender, EventArgs e)
         {
-            Debug.WriteLine("test:" + App.PlayerSymbolMove);
+            this.Dispatcher.Invoke(() =>
+            {
+                this.MoveSymbolLabel.Content = App.PlayerSymbolMove;
 
-            this.Dispatcher.Invoke(() => this.MoveSymbolLabel.Content = App.PlayerSymbolMove);
+                Button[,] buttons = new Button[3, 3]
+                {
+                    { this.FindName("Button1") as Button, this.FindName("Button2") as Button, this.FindName("Button3") as Button },
+                    { this.FindName("Button4") as Button, this.FindName("Button5") as Button, this.FindName("Button6") as Button },
+                    { this.FindName("Button7") as Button, this.FindName("Button8") as Button, this.FindName("Button9") as Button }
+                };
+
+                bool enableButtons = (App.PlayerSymbolMove == App.PlayerSymbol);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        buttons[i, j].IsEnabled = enableButtons;
+                    }
+                }
+            });
         }
 
         private void App_BoardChanged(object? sender, EventArgs e)

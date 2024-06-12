@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TicTacToe_Client_Server"
         mc:Ignorable="d"
-        Title="TcpWIndow" Height="275" Width="800"  SizeToContent="WidthAndHeight">
+        Title="TcpWIndow" Height="275" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="398*"/>
